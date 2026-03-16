@@ -1,0 +1,570 @@
+//Q1
+/*
+#include <stdio.h>
+int main(){
+    int n,t,f=-1;
+
+    if (scanf("%d",&n)!=1) return 0;
+
+    int ages[n];
+    for(int i=0;i<n;i++){
+        scanf("%d",&ages[i]);
+    }
+
+    scanf("%d",&t);
+
+    for(int i=0;i<n;i++){
+        if(ages[i]==t){
+            f=i;
+            break;
+        }
+    }
+
+    if(f!=-1){
+        printf("Element %d is present at index %d",t,f);
+    } else{
+        printf("Element %d is not present in array",t);
+    }
+    return 0;
+}
+*/
+
+//Q2
+/*
+#include<stdio.h>
+int main(){
+    int n,i;
+    if(scanf("%d",&n)!=1) return 0;
+
+    int weights[n];
+
+    for(i=0;i<n;i++){
+        scanf("%d",&weights[i]);
+    }
+
+    int h = weights[0];
+    int l = weights[0];
+    for (i=0;i<n;i++){
+        if(weights[i]>h){
+            h=weights[i];
+        }
+        if(weights[i]<l){
+            l=weights[i];
+        }
+    }
+
+    int diff=h-l;
+
+    printf("Heaviest piece weight: %d\n",h);
+    printf("Lightest piece weight: %d\n",l);
+    printf("Weight difference: %d\n",diff);
+    return 0;
+}
+*/
+
+//Q3
+/*
+#include<stdio.h>
+int main(){
+    int i,n;
+    scanf("%d",&n);
+
+    int a[n];
+    for(i=0;i<n;i++){
+        scanf("%d",&a[i]);
+    }
+
+    int m=0;
+    int f=-1;
+
+    i=0;
+    while(i<n){
+        int currid=a[i];
+        int c=0;
+
+        while(i<n&&a[i]==currid){
+            c++;
+            i++;
+        }
+        if(c%2!=0){
+            if(c>m){
+                m=c;
+                f=currid;
+            }
+        }
+    }
+    if(f!=-1){
+        printf("%d",f);
+    }
+    return 0;
+}
+*/
+
+
+//Q4
+/*
+#include<stdio.h>
+int main(){
+    int n,i,t,f=-1;
+    scanf("%d",&n);
+
+    int arr[n];
+    for(i=0;i<n;i++){
+        scanf("%d",&arr[i]);
+    }
+
+    scanf("%d",&t);
+
+    int low=0,high=n-1;
+    while(low<=high){
+        int mid=low+(high-low)/2;
+
+        if(arr[mid]==t){
+            f=mid;
+            break;
+        } else if(arr[mid]<t){
+            low=mid+1;
+        } else{
+            high=mid-1;
+        }
+    }
+    if(f!=-1){
+        printf("The target value %d is present at index %d",t,f);
+    } else{
+        printf("The target value %d is not present in the array",t);
+    }
+    return 0;
+}
+*/
+
+
+//Q5
+/*
+#include<stdio.h>
+int main(){
+    int n,j,i,temp;
+    scanf("%d",&n);
+
+    if(n<2){
+        printf("Insufficient data to find the second-fastest time.");
+        return 0;
+    }
+
+    int arr[n];
+    for(i=0;i<n;i++){
+        scanf("%d",&arr[i]);
+    }
+    for(i=0;i<n-1;i++){
+        for(j=0;j<n-i-1;j++){
+            if(arr[j]>arr[j+1]){
+                temp=arr[j];
+                arr[j]=arr[j+1];
+                arr[j+1]=temp;
+            }
+        }
+    }
+
+    printf("%d seconds",arr[1]);
+
+    return 0;
+}
+*/
+
+
+//Q6
+/*
+#include <stdio.h>
+
+int linearSearch(int arr[], int n, int target) {
+    for (int i = 0; i < n; i++) {
+        if (arr[i] == target) {
+            return i;
+        }
+    }
+    return -1;
+}
+
+int main() {
+    int n, target;
+    scanf("%d", &n);
+
+    int arr[n];
+    for (int i = 0; i < n; i++) {
+        scanf("%d", &arr[i]);
+    }
+
+    scanf("%d", &target);
+
+    int result = linearSearch(arr, n, target);
+
+    if (result != -1) {
+        printf("Product found at position %d", result + 1);
+    } else {
+        printf("Product not found");
+    }
+
+    return 0;
+}
+*/
+
+
+//Q7
+/*
+#include <stdio.h>
+
+int binarySearch(int arr[], int n, int target) {
+    int low = 0, high = n - 1;
+    while (low <= high) {
+        int mid = low + (high - low) / 2;
+        if (arr[mid] == target) {
+            return mid;
+        } else if (arr[mid] < target) {
+            low = mid + 1;
+        } else {
+            high = mid - 1;
+        }
+    }
+    return -1;
+}
+
+int main() {
+    int n, target;
+    scanf("%d", &n);
+
+    int arr[n];
+    for (int i = 0; i < n; i++) {
+        scanf("%d", &arr[i]);
+    }
+
+    scanf("%d", &target);
+
+    int result = binarySearch(arr, n, target);
+
+    if (result != -1) {
+        printf("Book found at position %d", result + 1);
+    } else {
+        printf("Book not found");
+    }
+
+    return 0;
+}
+*/
+
+
+//Q8
+/*
+#include <stdio.h>
+
+int main()
+{
+    int n;
+    scanf("%d", &n);
+
+    int arr[100];
+    int i;
+
+    for (i = 0; i < n; i++)
+    {
+        scanf("%d", &arr[i]);
+    }
+
+    int key, limit;
+    scanf("%d %d", &key, &limit);
+
+    int index = -1;
+
+    for (i = 0; i <= n; i++)
+    {
+        if (arr[i] == key && i < limit)
+        {
+            index = i;
+        }
+    }
+
+    printf("%d", index);
+
+    return 0;
+}
+*/
+
+
+//Q9
+/*
+#include <stdio.h>
+
+int main()
+{
+    int n;
+    scanf("%d", &n);
+
+    int arr[100];
+    int i;
+
+    for (i = 0; i < n; i++)
+    {
+        scanf("%d", &arr[i]);
+    }
+
+    int key;
+    scanf("%d", &key);
+
+    int low = 0;
+    int high = n - 1;
+    int result = -1;
+
+    while (low <= high)
+    {
+        int mid = low + (high - low) / 2;
+
+        if (arr[mid] == key)
+        {
+            result = mid;
+            high = mid - 1;
+        }
+        else if (arr[mid] < key)
+        {
+            low = mid + 1;
+        }
+        else
+        {
+            high = mid - 1;
+        }
+    }
+
+    printf("%d", result);
+
+    return 0;
+}
+*/
+
+
+//Q10
+/*
+#include <stdio.h>
+
+int main()
+{
+    int n;
+    scanf("%d", &n);
+
+    int arr[100];
+    int i, j;
+
+    for (i = 0; i < n; i++)
+    {
+        scanf("%d", &arr[i]);
+    }
+
+    for (i = 0; i < n - 1; i++)
+    {
+        for (j = 0; j < n - i - 1; j++)
+        {
+            if (arr[j] > arr[j + 1])
+            {
+                int temp = arr[j];
+                arr[j] = arr[j + 1];
+                arr[j + 1] = temp;
+            }
+        }
+    }
+
+    int L, R;
+    scanf("%d %d", &L, &R);
+
+    int sum = 0;
+
+    for (i = L; i <= R; i++)
+    {
+        sum += arr[i];
+    }
+
+    printf("%d\n", sum);
+
+    return 0;
+}
+*/
+
+
+//Q11
+/*
+#include <stdio.h>
+
+int main() {
+    int n, k;
+    int count = 0;
+    
+    scanf("%d", &n);
+    
+    int elements[20]; 
+    
+    for (int i = 0; i < n; i++) {
+        scanf("%d", &elements[i]);
+    }
+    
+    scanf("%d", &k);
+    
+    for (int i = 0; i < n; i++) {
+        if (elements[i] == k) {
+            count++;
+            if (count == 2) {
+                printf("%d", i);
+                return 0;
+            }
+        }
+    }
+    
+    printf("Key not found or found only once");
+    
+    return 0;
+}
+*/
+
+
+//Q12
+/*
+#include <stdio.h>
+
+int main() {
+    int n;
+    scanf("%d", &n);
+
+    int scores[100];
+    for (int i = 0; i < n; i++) {
+        scanf("%d", &scores[i]);
+    }
+
+    for (int i = 0; i < n - 1; i++) {
+        for (int j = 0; j < n - i - 1; j++) {
+            if (scores[j] > scores[j + 1]) {
+                int temp = scores[j];
+                scores[j] = scores[j + 1];
+                scores[j + 1] = temp;
+            }
+        }
+    }
+
+    for (int i = 0; i < n; i++) {
+        printf("%d ", scores[i]);
+    }
+
+    return 0;
+}
+*/
+
+//Q13
+/*
+#include <stdio.h>
+
+int findClosestRecursive(int arr[], int low, int high, int target) {
+    if (low > high) {
+        return -1;
+    }
+
+    int mid = low + (high - low) / 2;
+
+    if (arr[mid] == target) {
+        return arr[mid];
+    }
+
+    if (arr[mid] > target) {
+        return findClosestRecursive(arr, low, mid - 1, target);
+    }
+    
+    int rightResult = findClosestRecursive(arr, mid + 1, high, target);
+    
+    if (rightResult != -1) {
+        return rightResult;
+    }
+    
+    return arr[mid];
+}
+
+int main() {
+    int n, target;
+    if (scanf("%d", &n) != 1) return 0;
+
+    int arr[10];
+    for (int i = 0; i < n; i++) {
+        scanf("%d", &arr[i]);
+    }
+
+    scanf("%d", &target);
+
+    int result = findClosestRecursive(arr, 0, n - 1, target);
+
+    if (result != -1) {
+        printf("The closest item ID less than or equal to %d is %d", target, result);
+    } else {
+        printf("No closest item with an ID less than or equal to %d exists in the warehouse", target);
+    }
+
+    return 0;
+}
+*/
+
+
+//Q14
+/*
+#include <stdio.h>
+
+int main() {
+    int n, i, j, count;
+    scanf("%d", &n);
+
+    int arr[20];
+    for (i = 0; i < n; i++) {
+        scanf("%d", &arr[i]);
+    }
+
+    for (i = 0; i < n; i++) {
+        count = 0;
+        for (j = 0; j < n; j++) {
+            if (arr[i] == arr[j]) {
+                count++;
+            }
+        }
+
+        if (count == 1) {
+            printf("%d", arr[i]);
+            return 0;
+        }
+    }
+
+    printf("No non-duplicate element found");
+    return 0;
+}
+*/
+
+
+//Q15
+/*
+#include <stdio.h>
+
+int main() {
+    int n, i, j;
+    char temp;
+    char arr[20];
+
+    scanf("%d", &n);
+
+    for (i = 0; i < n; i++) {
+        scanf(" %c", &arr[i]);
+    }
+
+    for (i = 0; i < n - 1; i++) {
+        for (j = 0; j < n - i - 1; j++) {
+            if (arr[j] > arr[j + 1]) {
+                temp = arr[j];
+                arr[j] = arr[j + 1];
+                arr[j + 1] = temp;
+            }
+        }
+    }
+
+    for (i = 0; i < n; i++) {
+        printf("%c ", arr[i]);
+    }
+
+    return 0;
+}
+*/
