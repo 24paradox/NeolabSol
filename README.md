@@ -1,2 +1,0 @@
-# NeolabSol
-Neocolab weekly solutions
